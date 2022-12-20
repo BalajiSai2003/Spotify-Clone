@@ -8,6 +8,9 @@ let gif=document.getElementById("gif");
 let masterSongName=document.getElementById("mastersongName")
 let soongItem=Array.from( document.getElementsByClassName("songItem"))
 let songs=[
+    {songName:"Never Gonna Give You Up", filePath:"songs/Rick-Astley-Never-Gonna-Give-You-Up.mp3",coverPath:"covers/Rick-Astley-Never-Gonna-Give-You-Up.jpg"},
+    {songName:"The Coconut", filePath:"songs/The-Coconut.mp3",coverPath:"covers/The-Coconut.jpg"},
+    {songName:"Coffin Dance", filePath:"songs/Coffin-Dance.mp3",coverPath:"covers/Coffin-Dance.jpg"},
     {songName:"Jambalakadi Jaru Mitaya", filePath:"songs/Jambalakadi-Jaru-Mitaya-song.mp3",coverPath:"covers/Jambalakadi-Jaru-Mitayaimg.jpg"},
     {songName:"Never Gonna Give You Up", filePath:"songs/Rick-Astley-Never-Gonna-Give-You-Up.mp3",coverPath:"covers/Rick-Astley-Never-Gonna-Give-You-Up.jpg"},
     {songName:"The Coconut", filePath:"songs/The-Coconut.mp3",coverPath:"covers/The-Coconut.jpg"},
@@ -15,15 +18,12 @@ let songs=[
     {songName:"Jambalakadi Jaru Mitaya", filePath:"songs/Jambalakadi-Jaru-Mitaya-song.mp3",coverPath:"covers/Jambalakadi-Jaru-Mitayaimg.jpg"},
     {songName:"Never Gonna Give You Up", filePath:"songs/Rick-Astley-Never-Gonna-Give-You-Up.mp3",coverPath:"covers/Rick-Astley-Never-Gonna-Give-You-Up.jpg"},
     {songName:"The Coconut", filePath:"songs/The-Coconut.mp3",coverPath:"covers/The-Coconut.jpg"},
-    {songName:"Coffin Dance", filePath:"songs/Coffin-Dance.mp3",coverPath:"covers/Coffin-Dance.jpg"},{songName:"Jambalakadi Jaru Mitaya", filePath:"songs/Jambalakadi-Jaru-Mitaya-song.mp3",coverPath:"covers/Jambalakadi-Jaru-Mitayaimg.jpg"},
-    {songName:"Jambalakadi Jaru Mitaya", filePath:"songs/Jambalakadi-Jaru-Mitaya-song.mp3",coverPath:"covers/Jambalakadi-Jaru-Mitayaimg.jpg"},
-    {songName:"Never Gonna Give You Up", filePath:"songs/Rick-Astley-Never-Gonna-Give-You-Up.mp3",coverPath:"covers/Rick-Astley-Never-Gonna-Give-You-Up.jpg"},
-    {songName:"The Coconut", filePath:"songs/The-Coconut.mp3",coverPath:"covers/The-Coconut.jpg"},
-    {songName:"Coffin Dance", filePath:"songs/Coffin-Dance.mp3",coverPath:"covers/Coffin-Dance.jpg"}, {songName:"Jambalakadi Jaru Mitaya", filePath:"songs/Jambalakadi-Jaru-Mitaya-song.mp3",coverPath:"covers/Jambalakadi-Jaru-Mitayaimg.jpg"},
+    {songName:"Coffin Dance", filePath:"songs/Coffin-Dance.mp3",coverPath:"covers/Coffin-Dance.jpg"},
     {songName:"Jambalakadi Jaru Mitaya", filePath:"songs/Jambalakadi-Jaru-Mitaya-song.mp3",coverPath:"covers/Jambalakadi-Jaru-Mitayaimg.jpg"},
     {songName:"Never Gonna Give You Up", filePath:"songs/Rick-Astley-Never-Gonna-Give-You-Up.mp3",coverPath:"covers/Rick-Astley-Never-Gonna-Give-You-Up.jpg"},
     {songName:"The Coconut", filePath:"songs/The-Coconut.mp3",coverPath:"covers/The-Coconut.jpg"},
     {songName:"Coffin Dance", filePath:"songs/Coffin-Dance.mp3",coverPath:"covers/Coffin-Dance.jpg"},
+    {songName:"Jambalakadi Jaru Mitaya", filePath:"songs/Jambalakadi-Jaru-Mitaya-song.mp3",coverPath:"covers/Jambalakadi-Jaru-Mitayaimg.jpg"},
 ]
 const makeAllplay=()=>{
     Array.from(document.getElementsByClassName("songItemPlay")).forEach((element)=>{
@@ -49,6 +49,7 @@ masterPlay.addEventListener("click",()=>{
         audioElement.play();
         masterPlay.classList.remove("fa-circle-play");
         masterPlay.classList.add("fa-circle-pause");
+        document.getElementById(`${songIndex+10}`).style.opacity=1;
         gif.style.opacity=1;
     }
     else{
@@ -57,6 +58,7 @@ masterPlay.addEventListener("click",()=>{
         audioElement.pause();
         masterPlay.classList.remove("fa-circle-pause");
         masterPlay.classList.add("fa-circle-play");
+        document.getElementById(`${songIndex+10}`).style.opacity=0;
         gif.style.opacity=0;
     }
 })
@@ -81,6 +83,7 @@ Array.from(document.getElementsByClassName("songItemPlay")).forEach((element)=>{
         e.target.classList.add("fa-circle-pause")
         audioElement.src=`${songs[songIndex].filePath}`;
         masterSongName.innerText=songs[songIndex].songName;
+        document.getElementsByClassName("songbannerimg")[0].src=songs[songIndex].coverPath
         audioElement.play()
         document.getElementById(`${songIndex+10}`).style.opacity=1;
         masterPlay.classList.remove("fa-circle-play");
@@ -100,6 +103,7 @@ document.getElementById("next").addEventListener("click",()=>{
     }
     audioElement.src=`${songs[songIndex].filePath}`;
     masterSongName.innerText=songs[songIndex].songName;
+    document.getElementsByClassName("songbannerimg")[0].src=songs[songIndex].coverPath
     audioElement.currentTime=0;    
     audioElement.play()
     masterPlay.classList.remove("fa-circle-play");
@@ -120,6 +124,8 @@ document.getElementById("previous").addEventListener("click",()=>{
     }
     audioElement.src=`${songs[songIndex].filePath}`;
     masterSongName.innerText=songs[songIndex].songName;
+    document.getElementsByClassName("songbannerimg")[0].src=songs[songIndex].coverPath
+    // console.log(songs[songIndex].coverPath)
     audioElement.currentTime=0;        
     audioElement.play()
     masterPlay.classList.remove("fa-circle-play");

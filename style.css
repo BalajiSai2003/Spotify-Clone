@@ -101,3 +101,27 @@ height: 50px;
     opacity: 0;
     transition: opacity is ease-in;
 }
+.songlist{
+    display: flex;
+}
+.SongItemContainer{
+    font-family: "Varela Round", sans-serif;
+    width: 60%;
+}
+.songBanner{
+    width: 40%;
+    font-family: "Varela Round", sans-serif;
+}
+.songBanner img{
+    padding: 10%;
+    width: 80%;
+    border-radius: 25%;
+}
+.songBanner p {
+    text-align: center;
+    padding-left: 10%;
+}
+.songBanner h3{
+    padding-left: 10%;
+    padding-bottom: 5%;
+}
